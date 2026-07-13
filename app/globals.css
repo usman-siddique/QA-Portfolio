@@ -1,0 +1,214 @@
+@import "tailwindcss";
+
+/*
+  Design system tokens.
+  Palette: warm ink/paper neutrals + a single precise amber accent —
+  deliberately not the default blue/purple SaaS palette every dev
+  portfolio reaches for. Accent values are contrast-checked against
+  their paired background (AA, 4.5:1+) for text-sized use.
+  Depth is layered via --surface/--surface-2 (elevation) plus themed
+  shadow tokens — light mode uses warm-tinted shadows rather than flat
+  black so it reads as designed, not just "white page".
+*/
+:root {
+  --background: #faf9f6;
+  --foreground: #14181c;
+  --muted: #6b7078;
+  --muted-foreground: #52565d;
+  --border: #e4e1da;
+  --border-strong: #d3cfc3;
+  --surface: #f3f1ea;
+  --surface-2: #ebe7dc;
+  --accent: #96600f;
+  --accent-strong: #7a4e0c;
+  --accent-soft: #f1e4cc;
+  --success: #15803d;
+  --danger: #b91c1c;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 14px;
+  --radius-xl: 22px;
+
+  --shadow-xs: 0 1px 2px rgba(30, 24, 12, 0.05);
+  --shadow-sm: 0 2px 6px -2px rgba(30, 24, 12, 0.08), 0 1px 2px rgba(30, 24, 12, 0.05);
+  --shadow-md: 0 12px 24px -8px rgba(30, 24, 12, 0.14), 0 4px 8px -4px rgba(30, 24, 12, 0.08);
+  --shadow-lg: 0 28px 60px -16px rgba(30, 24, 12, 0.22), 0 10px 20px -8px rgba(30, 24, 12, 0.12);
+  --shadow-glow: 0 0 0 1px rgba(150, 96, 15, 0.22), 0 16px 40px -12px rgba(150, 96, 15, 0.28);
+  --grid-line: rgba(20, 24, 28, 0.055);
+  --mesh-accent: rgba(150, 96, 15, 0.14);
+  --mesh-accent-2: rgba(150, 96, 15, 0.07);
+  --sheen: rgba(255, 255, 255, 0.5);
+}
+
+:root[data-theme="dark"] {
+  --background: #0a0c0e;
+  --foreground: #f3f1ec;
+  --muted: #9a9fa6;
+  --muted-foreground: #b3b8bf;
+  --border: #23262b;
+  --border-strong: #33373d;
+  --surface: #15181b;
+  --surface-2: #1c2024;
+  --accent: #e3a542;
+  --accent-strong: #f0bc6a;
+  --accent-soft: #3a2d15;
+  --success: #4ade80;
+  --danger: #f87171;
+
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.35);
+  --shadow-sm: 0 2px 8px -2px rgba(0, 0, 0, 0.45), 0 1px 3px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 16px 32px -8px rgba(0, 0, 0, 0.55), 0 4px 12px -4px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 32px 70px -16px rgba(0, 0, 0, 0.7), 0 12px 24px -8px rgba(0, 0, 0, 0.5);
+  --shadow-glow: 0 0 0 1px rgba(227, 165, 66, 0.28), 0 16px 44px -10px rgba(227, 165, 66, 0.3);
+  --grid-line: rgba(243, 241, 236, 0.06);
+  --mesh-accent: rgba(227, 165, 66, 0.16);
+  --mesh-accent-2: rgba(227, 165, 66, 0.06);
+  --sheen: rgba(255, 255, 255, 0.06);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --background: #0a0c0e;
+    --foreground: #f3f1ec;
+    --muted: #9a9fa6;
+    --muted-foreground: #b3b8bf;
+    --border: #23262b;
+    --border-strong: #33373d;
+    --surface: #15181b;
+    --surface-2: #1c2024;
+    --accent: #e3a542;
+    --accent-strong: #f0bc6a;
+    --accent-soft: #3a2d15;
+    --success: #4ade80;
+    --danger: #f87171;
+
+    --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.35);
+    --shadow-sm: 0 2px 8px -2px rgba(0, 0, 0, 0.45), 0 1px 3px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 16px 32px -8px rgba(0, 0, 0, 0.55), 0 4px 12px -4px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 32px 70px -16px rgba(0, 0, 0, 0.7), 0 12px 24px -8px rgba(0, 0, 0, 0.5);
+    --shadow-glow: 0 0 0 1px rgba(227, 165, 66, 0.28), 0 16px 44px -10px rgba(227, 165, 66, 0.3);
+    --grid-line: rgba(243, 241, 236, 0.06);
+    --mesh-accent: rgba(227, 165, 66, 0.16);
+    --mesh-accent-2: rgba(227, 165, 66, 0.06);
+    --sheen: rgba(255, 255, 255, 0.06);
+  }
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-accent: var(--accent);
+  --color-accent-strong: var(--accent-strong);
+  --color-accent-soft: var(--accent-soft);
+  --color-success: var(--success);
+  --color-danger: var(--danger);
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius-md);
+  --radius-lg: var(--radius-lg);
+  --radius-xl: var(--radius-xl);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    color-scheme: light;
+  }
+
+  html[data-theme="dark"] {
+    color-scheme: dark;
+  }
+
+  body {
+    background: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+  }
+
+  ::selection {
+    background: var(--color-accent-soft);
+    color: var(--color-accent);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+}
+
+@layer utilities {
+  /* Elevation scale — use instead of plain borders for anything meant to feel "lifted". */
+  .shadow-xs { box-shadow: var(--shadow-xs); }
+  .shadow-elevated-sm { box-shadow: var(--shadow-sm); }
+  .shadow-elevated-md { box-shadow: var(--shadow-md); }
+  .shadow-elevated-lg { box-shadow: var(--shadow-lg); }
+  .shadow-glow { box-shadow: var(--shadow-glow); }
+
+  /* Faint blueprint dot-grid, fades toward the edges via mask. */
+  .bg-dot-grid {
+    background-image: radial-gradient(var(--grid-line) 1px, transparent 1px);
+    background-size: 28px 28px;
+    -webkit-mask-image: radial-gradient(ellipse 100% 100% at 50% 0%, black 40%, transparent 85%);
+    mask-image: radial-gradient(ellipse 100% 100% at 50% 0%, black 40%, transparent 85%);
+  }
+
+  /* Atmospheric mesh gradient used to bookend Hero + Contact. */
+  .bg-mesh {
+    background-image:
+      radial-gradient(60% 50% at 85% 0%, var(--mesh-accent) 0%, transparent 60%),
+      radial-gradient(45% 40% at 10% 15%, var(--mesh-accent-2) 0%, transparent 65%);
+  }
+
+  .bg-mesh-inverse {
+    background-image:
+      radial-gradient(55% 55% at 15% 100%, var(--mesh-accent) 0%, transparent 60%),
+      radial-gradient(40% 40% at 90% 80%, var(--mesh-accent-2) 0%, transparent 65%);
+  }
+
+  /* Thin top-edge sheen for elevated cards — reinforces a physical, lit surface. */
+  .surface-sheen {
+    position: relative;
+  }
+  .surface-sheen::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(180deg, var(--sheen), transparent 40%);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
