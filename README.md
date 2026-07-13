@@ -1,67 +1,135 @@
-# Muhammad Usman — Portfolio
+# Muhammad Usman | Software QA & Test Automation Portfolio
 
-Personal portfolio for Muhammad Usman, SQA Engineer building toward Test
-Automation. Built from scratch with Next.js (App Router), TypeScript,
-Tailwind CSS v4, and Motion.
+A modern, high-performance portfolio showcasing my experience as a Software Quality Assurance Engineer with a growing focus on Test Automation.
 
-## Stack
+The portfolio highlights real client work, automation projects, technical skills, case studies, and professional experience while following modern frontend best practices for performance, accessibility, and SEO.
 
-- **Framework:** Next.js 16 (App Router, RSC)
-- **Styling:** Tailwind CSS v4 (CSS-based `@theme` design tokens in `app/globals.css`)
-- **Motion:** Motion (Framer Motion successor), reduced-motion aware
-- **Forms:** react-hook-form + zod, delivered via Resend
-- **Theming:** next-themes (light/dark, user-toggleable)
-- **Deployment target:** Vercel (free tier)
+---
 
-## Structure
+## Live Demo
 
-```
-app/                  Routes, layouts, metadata, API routes
-  work/[slug]/         Case study pages (one per employer engagement)
-  api/contact/         Contact form submission handler (Resend)
+> Coming soon (Vercel)
+
+---
+
+## Tech Stack
+
+- **Framework:** Next.js 16 (App Router)
+- **Language:** TypeScript
+- **Styling:** Tailwind CSS v4
+- **Animations:** Motion
+- **Forms:** React Hook Form + Zod
+- **Email Service:** Resend
+- **Theme:** next-themes (Dark / Light Mode)
+- **Deployment:** Vercel
+
+---
+
+## Features
+
+- Responsive design for desktop, tablet, and mobile
+- Dark & Light theme support
+- SEO optimized
+- Dynamic Open Graph images
+- Structured metadata
+- Accessible UI
+- Contact form with validation
+- Resume download
+- Featured project case studies
+- Technical skills showcase
+- Professional experience timeline
+- Certifications section
+- GitHub project showcase
+- Performance-focused architecture
+
+---
+
+## Project Structure
+
+```text
+app/
+├── api/contact/         Contact form API (Resend)
+├── work/[slug]/         Individual case study pages
+├── layout.tsx
+├── page.tsx
+└── ...
+
 components/
-  layout/              Header, Footer, theme provider/toggle
-  sections/            Home page sections (Hero, FeaturedWork, Contact, ...)
-  ui/                  Design system primitives (Button, Card, Badge, ...)
-content/               Typed, source-of-truth content (profile, experience,
-                        skills, certifications, education, artifacts, testimonials)
-lib/                   Utilities, site config, validation schemas
-types/                 Shared content types
+├── layout/              Header, Footer, Navigation
+├── sections/            Homepage sections
+└── ui/                  Reusable UI components
+
+content/                 Portfolio content
+lib/                     Utilities & helpers
+types/                   Shared TypeScript types
+public/                  Static assets
 ```
 
-All page content is sourced from `content/*.ts` — no copy is hardcoded
-into components. Nothing in `content/` is fabricated; fields without a
-verified value are left `null`/empty rather than guessed (see e.g.
-`content/education.ts`, `content/testimonials.ts`).
+All portfolio content is managed from the `content/` directory, making it easy to update experience, projects, certifications, skills, and profile information without modifying UI components.
 
-## Environment variables
+---
 
-Create `.env.local` (already gitignored) with:
+## Environment Variables
 
+Create a `.env.local` file:
+
+```env
+RESEND_API_KEY=
+CONTACT_FROM_EMAIL=
 ```
-RESEND_API_KEY=          # required for the contact form to actually send mail
-CONTACT_FROM_EMAIL=      # optional — defaults to Resend's sandbox sender
-```
 
-Without `RESEND_API_KEY`, the contact form still validates and renders
-correctly but returns a clear error instead of silently failing.
+The contact form is fully functional once a valid `RESEND_API_KEY` is configured.
 
-## Development
+---
+
+## Getting Started
+
+Install dependencies:
 
 ```bash
 npm install
-npm run dev      # http://localhost:3000
-npm run build    # production build
+```
+
+Run the development server:
+
+```bash
+npm run dev
+```
+
+Open:
+
+```
+http://localhost:3000
+```
+
+---
+
+## Production Build
+
+```bash
+npm run build
+```
+
+---
+
+## Lint
+
+```bash
 npm run lint
 ```
 
-## Known pending items
+---
 
-- `RESEND_API_KEY` — not yet set (intentionally deferred until closer to
-  deployment). Contact form validates and renders correctly but returns
-  a clear error instead of sending until this is set.
-- `lib/site.ts` `url` — placeholder Vercel subdomain; update once a
-  custom domain is attached.
-- `content/education.ts` — intentionally shows only degree + institution,
-  no dates/CGPA, per explicit instruction.
-- `content/testimonials.ts` — intentionally empty until real testimonials are provided.
+## Deployment
+
+This project is configured for deployment on **Vercel**.
+
+After importing the repository into Vercel, configure the required environment variables and deploy.
+
+---
+
+## License
+
+This repository represents my personal portfolio website.
+
+The source code is available for learning and reference purposes. Portfolio content, branding, and personal information belong to Muhammad Usman.
