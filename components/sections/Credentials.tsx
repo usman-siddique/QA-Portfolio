@@ -16,18 +16,30 @@ export function Credentials() {
 
         <div className="mt-14 grid gap-6 lg:grid-cols-[1fr_1.3fr]">
           <Reveal>
-            <Card className="flex h-full flex-col gap-4">
-              <GraduationCap
-                className="size-6 text-accent"
-                aria-hidden="true"
-              />
-              <div>
-                <h3 className="text-lg font-medium text-foreground">
-                  {education.degree}
-                </h3>
-                <p className="mt-1 text-sm text-muted-foreground">
-                  {education.institution}
-                </p>
+            <Card className="h-full">
+              <div className="flex items-start gap-4">
+                <GraduationCap
+                  className="mt-0.5 size-6 shrink-0 text-accent"
+                  aria-hidden="true"
+                />
+                <div className="min-w-0 flex-1">
+                  <div className="flex items-start justify-between gap-4">
+                    <div>
+                      <h3 className="text-lg font-medium text-foreground">
+                        {education.degree}
+                      </h3>
+                      <p className="mt-1 text-sm text-muted-foreground">
+                        {education.institution}
+                      </p>
+                    </div>
+                    <span className="shrink-0 pt-0.5 text-xs font-medium tracking-wide text-muted-foreground">
+                      {education.dateRange}
+                    </span>
+                  </div>
+                  <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+                    {education.summary}
+                  </p>
+                </div>
               </div>
             </Card>
           </Reveal>

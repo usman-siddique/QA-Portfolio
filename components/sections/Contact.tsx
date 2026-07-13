@@ -1,4 +1,4 @@
-import { Mail, Link2, Code2, Briefcase, MapPin } from "lucide-react";
+import { Mail, Link2, Code2, Briefcase, MapPin, MessageCircle } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Card } from "@/components/ui/Card";
@@ -11,6 +11,11 @@ const channels = [
     label: profile.email,
     href: `mailto:${profile.email}`,
     icon: Mail,
+  },
+  {
+    label: "WhatsApp",
+    href: `https://wa.me/${profile.phone.replace(/\D/g, "")}`,
+    icon: MessageCircle,
   },
   {
     label: "LinkedIn",
@@ -43,7 +48,7 @@ export function Contact() {
               description="Whether you're hiring for a QA or automation role, or need testing support for a project, I usually reply within a day."
             />
 
-            <div className="mt-10 flex flex-col gap-3">
+            <div className="mt-8 flex flex-col gap-1">
               {channels.map((channel) => {
                 const Icon = channel.icon;
                 return (
@@ -56,7 +61,7 @@ export function Contact() {
                         ? "noopener noreferrer"
                         : undefined
                     }
-                    className="group flex items-center gap-3 rounded-[var(--radius-md)] border border-transparent px-3 py-2.5 text-sm text-muted-foreground transition-all duration-200 hover:-translate-y-0.5 hover:border-border hover:bg-surface hover:text-foreground hover:shadow-elevated-sm"
+                    className="group flex items-center gap-3 rounded-[var(--radius-md)] border border-transparent px-3 py-2 text-sm text-muted-foreground transition-all duration-200 hover:-translate-y-0.5 hover:border-border hover:bg-surface hover:text-foreground hover:shadow-elevated-sm"
                   >
                     <span className="flex size-8 shrink-0 items-center justify-center rounded-[var(--radius-sm)] border border-border bg-surface text-accent transition-colors group-hover:border-accent/40">
                       <Icon className="size-4" aria-hidden="true" />
@@ -65,11 +70,11 @@ export function Contact() {
                   </a>
                 );
               })}
-              <div className="flex items-center gap-3 px-3 py-2.5 text-sm text-muted-foreground">
+              <div className="flex items-center gap-3 px-3 py-2 text-sm text-muted-foreground">
                 <span className="flex size-8 shrink-0 items-center justify-center rounded-[var(--radius-sm)] border border-border bg-surface text-accent">
                   <MapPin className="size-4" aria-hidden="true" />
                 </span>
-                {profile.location} · Open to full-time &amp; freelance roles
+                {profile.location}
               </div>
             </div>
           </Reveal>
