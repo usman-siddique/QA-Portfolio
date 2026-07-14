@@ -10,11 +10,14 @@ export function MetricStat({
   className?: string;
 }) {
   return (
-    <div className={cn("flex flex-col gap-1", className)}>
-      <span className="font-mono text-2xl font-medium tracking-tight text-foreground sm:text-3xl">
+    <div className={cn("flex flex-col gap-2", className)}>
+      <span className="font-mono text-3xl font-semibold leading-none tracking-[-0.04em] text-foreground sm:text-4xl">
         {value}
       </span>
-      <span className="text-sm text-muted-foreground">{label}</span>
+
+      <span className="text-xs font-mono uppercase tracking-[0.1em] leading-relaxed text-muted-foreground">
+        {label}
+      </span>
     </div>
   );
 }

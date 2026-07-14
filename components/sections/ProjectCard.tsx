@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Check } from "lucide-react";
 import { Card } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
 import { MetricStat } from "@/components/ui/MetricStat";
@@ -53,16 +53,46 @@ export function ProjectCard({
       </div>
 
       {experience.metrics.length > 0 ? (
-        <div className="relative grid grid-cols-3 gap-4 border-t border-border pt-6">
-          {experience.metrics.slice(0, 3).map((metric) => (
-            <MetricStat
+        <dl className="relative grid grid-cols-2 gap-3 border-t border-border pt-6">
+          {experience.metrics.map((metric) => (
+            <div
               key={metric.label}
-              value={metric.value}
-              label={metric.label}
-            />
+              className="surface-sheen flex min-h-28 flex-col justify-between rounded-[var(--radius-md)] border border-border bg-surface-2/70 px-4 py-4 shadow-xs"
+            >
+              <dt className="sr-only">{metric.label}</dt>
+              <dd>
+                <MetricStat
+                  value={metric.value}
+                  label={metric.label}
+                  className="gap-2 [&>span:first-child]:text-3xl [&>span:last-child]:line-clamp-2 [&>span:last-child]:text-[10px]"
+                />
+              </dd>
+            </div>
           ))}
+        </dl>
+      ) : (
+        <div className="relative min-h-65 border-t border-border pt-6">
+          <div className="surface-sheen h-full rounded-[var(--radius-lg)] border border-border bg-surface-2/70 p-5 shadow-xs">
+            <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-accent">
+              Key Contributions
+            </p>
+            <ul className="mt-4 flex flex-col gap-3">
+              {experience.responsibilities.slice(0, 3).map((responsibility) => (
+                <li
+                  key={responsibility}
+                  className="flex items-start gap-2.5 text-xs leading-relaxed text-muted-foreground"
+                >
+                  <Check
+                    className="mt-0.5 size-3.5 shrink-0 text-accent"
+                    aria-hidden="true"
+                  />
+                  <span className="line-clamp-2">{responsibility}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
-      ) : null}
+      )}
 
       <Link
         href={`/work/${experience.slug}`}

@@ -92,9 +92,6 @@ export function Footer() {
 
       <Container className="relative flex flex-col gap-2 border-t border-border py-5 text-xs text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
         <p>© {year} {profile.name}. All rights reserved.</p>
-        <p className="font-mono text-[11px] uppercase tracking-wider text-muted-foreground/80">
-          Built with care in {profile.location}
-        </p>
       </Container>
     </footer>
   );

@@ -12,7 +12,20 @@ export function Hero() {
       <Container className="relative grid gap-12 pb-16 pt-10 sm:gap-14 sm:pb-20 sm:pt-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:gap-12 lg:pb-24 lg:pt-14">
         <div className="flex flex-col gap-8">
           <Reveal>
-            <div className="flex flex-wrap items-center gap-x-4 gap-y-2 font-mono text-xs uppercase tracking-[0.14em] text-muted-foreground">
+            <div className="flex flex-col gap-2 font-mono text-xs uppercase tracking-[0.14em] text-muted-foreground md:hidden">
+              <span>
+                {profile.name} <span aria-hidden="true">·</span> SQA Engineer
+              </span>
+              <span className="inline-flex items-center gap-1.5 text-accent">
+                <span className="relative flex size-1.5">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-60" />
+                  <span className="relative inline-flex size-1.5 rounded-full bg-accent" />
+                </span>
+                Open to opportunities
+              </span>
+            </div>
+
+            <div className="hidden flex-wrap items-center gap-x-4 gap-y-2 font-mono text-xs uppercase tracking-[0.14em] text-muted-foreground md:flex">
               <span className="inline-flex items-center gap-1.5">
                 <MapPin className="size-3.5" aria-hidden="true" />
                 {profile.location}

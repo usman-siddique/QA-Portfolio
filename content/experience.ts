@@ -13,7 +13,6 @@ export const experience: Experience[] = [
     endDate: null,
     domain: [
       "Automotive E-commerce",
-      "Vehicle Marketplace",
       "Live Auctions",
       "International Shipping",
       "Web & Mobile (Android & iOS)",
@@ -22,11 +21,10 @@ export const experience: Experience[] = [
       "SAT Japan is a product-based automotive e-commerce platform that enables customers and dealers worldwide to buy, sell, negotiate, and auction Japanese vehicles through web and mobile applications. The platform manages the complete customer journey from vehicle discovery to payment, international shipping, and order management.",
     metrics: [
       { label: "Bugs Reported", value: "900+" },
-      { label: "Test Cases Designed & Executed", value: "500+" },
-      { label: "Regression Test Suite", value: "200+" },
-      { label: "Release Test Coverage", value: "90%+" },
-      { label: "Business Modules Tested", value: "10+" },
-      { label: "Automation Coverage", value: "5+ Core Modules" },
+      { label: "Test Cases Executed", value: "500+" },
+      { label: "Regression Cycles", value: "200+" },
+      { label: "Release Coverage", value: "90%+" },
+      { label: "Playwright Automation Modules Automated", value: "5+" },
     ],
     responsibilities: [
       "Lead end-to-end quality assurance across core business modules, including Used Cars, New Cars, Auctions, Reservations, Negotiations, Search & Filters, Sell My Car, Checkout, Orders, International Shipping, Dealer Portal, Admin Panel, and Android & iOS mobile applications.",

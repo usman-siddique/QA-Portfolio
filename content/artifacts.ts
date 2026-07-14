@@ -14,7 +14,7 @@ export const artifacts: Artifact[] = [
     tools: ["Playwright", "Python", "Pytest"],
     facts: [
       { label: "Pattern", value: "Page Object Model" },
-      { label: "Coverage", value: "36+ tests" },
+      { label: "Coverage", value: "40+ Playwright Tests" },
       { label: "Execution", value: "Parallel · multi-browser" },
       { label: "Reporting", value: "pytest-html + screenshots" },
     ],
