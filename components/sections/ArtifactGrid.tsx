@@ -8,8 +8,16 @@ import { Reveal } from "@/components/ui/Reveal";
 import { TechIcon } from "@/components/ui/TechIcon";
 import { artifacts } from "@/content/artifacts";
 
+const mobileMetricTitles: Record<string, string> = {
+  Pattern: "Page Object Model",
+  Coverage: "40+ Playwright Tests",
+  Execution: "Parallel Execution",
+  Reporting: "HTML Reports",
+};
+
 export function ArtifactGrid() {
   const [featured, ...rest] = artifacts;
+  const isSatAutomation = featured?.name === "SAT Automation";
 
   return (
     <section className="border-b border-border bg-surface/25">
@@ -32,7 +40,13 @@ export function ArtifactGrid() {
                 className="group block"
               >
                 <div className="surface-sheen relative overflow-hidden rounded-[var(--radius-xl)] border border-border-strong bg-surface-2 shadow-elevated-md transition-all duration-300 hover:-translate-y-1 hover:border-accent/50 hover:shadow-glow">
-                  <div className="grid gap-10 p-8 sm:p-10 lg:grid-cols-[1.2fr_1fr] lg:gap-14 lg:p-12">
+                  <div
+                    className={`grid gap-10 p-8 sm:p-10 lg:p-12 ${
+                      isSatAutomation
+                        ? "lg:grid-cols-[1.1fr_1fr] lg:gap-12"
+                        : "lg:grid-cols-[1.2fr_1fr] lg:gap-14"
+                    }`}
+                  >
                     <div className="flex flex-col gap-5">
                       <div className="flex flex-wrap items-center gap-3">
                         <Badge className="border-accent/40 text-accent">
@@ -59,20 +73,63 @@ export function ArtifactGrid() {
                           aria-hidden="true"
                         />
                       </span>
+
+                      {isSatAutomation && featured.tools.length > 0 ? (
+                        <div className="flex flex-wrap gap-2">
+                          {featured.tools.map((tool) => (
+                            <div
+                              key={tool}
+                              title={tool}
+                              className="flex size-8 items-center justify-center rounded-[var(--radius-sm)] border border-border bg-surface p-1.5 text-foreground/70 sm:size-9 sm:p-2"
+                            >
+                              <TechIcon name={tool} />
+                            </div>
+                          ))}
+                        </div>
+                      ) : null}
                     </div>
 
-                    <div className="flex flex-col gap-6">
-                      <div className="grid grid-cols-2 gap-x-6 gap-y-6 rounded-[var(--radius-lg)] border border-border bg-surface p-6">
-                        {featured.facts.map((fact) => (
-                          <MetricStat
-                            key={fact.label}
-                            value={fact.value}
-                            label={fact.label}
-                          />
-                        ))}
-                      </div>
+                    <div
+                      className={`flex flex-col gap-6${
+                        isSatAutomation ? " lg:justify-center" : ""
+                      }`}
+                    >
+                      {isSatAutomation ? (
+                        <div className="grid grid-cols-2 gap-2 rounded-[var(--radius-lg)] border border-border bg-surface p-2.5 sm:gap-3 sm:p-3">
+                          {featured.facts.map((fact) => (
+                            <div
+                              key={fact.label}
+                              className="surface-sheen flex min-h-[4.75rem] flex-col justify-between rounded-[var(--radius-md)] border border-border bg-surface-2/70 p-2.5 shadow-xs sm:min-h-22 sm:p-3"
+                            >
+                              <div className="min-w-0 flex flex-col gap-1.5 md:hidden">
+                                <span className="break-words font-mono text-[13px] font-bold leading-tight tracking-[-0.06em] text-foreground">
+                                  {mobileMetricTitles[fact.label] ?? fact.value}
+                                </span>
+                                <span className="font-mono text-[9px] uppercase leading-tight tracking-[0.1em] text-muted-foreground">
+                                  {fact.label}
+                                </span>
+                              </div>
+                              <MetricStat
+                                value={fact.value}
+                                label={fact.label}
+                                className="hidden min-w-0 gap-1.5 md:flex [&>span:first-child]:break-words [&>span:first-child]:whitespace-normal [&>span:first-child]:text-[9px] [&>span:first-child]:tracking-[-0.06em] min-[400px]:[&>span:first-child]:text-[11px] sm:[&>span:first-child]:text-[13px] lg:[&>span:first-child]:text-[clamp(0.65rem,1.25vw,1.125rem)] [&>span:last-child]:text-[9px] [&>span:last-child]:leading-tight sm:[&>span:last-child]:text-[10px]"
+                              />
+                            </div>
+                          ))}
+                        </div>
+                      ) : (
+                        <div className="grid grid-cols-2 gap-x-6 gap-y-6 rounded-[var(--radius-lg)] border border-border bg-surface p-6">
+                          {featured.facts.map((fact) => (
+                            <MetricStat
+                              key={fact.label}
+                              value={fact.value}
+                              label={fact.label}
+                            />
+                          ))}
+                        </div>
+                      )}
 
-                      {featured.tools.length > 0 ? (
+                      {!isSatAutomation && featured.tools.length > 0 ? (
                         <div className="flex flex-wrap gap-2">
                           {featured.tools.map((tool) => (
                             <div
