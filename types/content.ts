@@ -57,8 +57,6 @@ export interface Certification {
 export interface Education {
   degree: string;
   institution: string;
-  dateRange: string;
-  summary: string;
 }
 
 export interface Testimonial {

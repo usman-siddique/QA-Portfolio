@@ -52,7 +52,7 @@ export default async function Image() {
             color: "#9a9fa6",
           }}
         >
-          <span>900+ Bugs Reported</span>
+          <span>600+ Bugs Reported</span>
           <span>20% Regression Effort Cut</span>
           <span>3 Product Domains</span>
         </div>
