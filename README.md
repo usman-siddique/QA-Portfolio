@@ -8,7 +8,7 @@ The portfolio highlights real client work, automation projects, technical skills
 
 ## Live Demo
 
-> Coming soon (Vercel)
+> [Portfolio](https://usman-sqa.vercel.app/)
 
 ---
 
