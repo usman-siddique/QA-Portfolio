@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     description: siteConfig.description,
   },
   verification: {
-    google: "diNyGrvKRYDsX-eAas_tFSAOxdfaanKzRDXT6rWjzZQ",
+    google: "zDESuyZBoxlJZ_E8wlrjx7v3srLO4Rni83S7zYVc6_U",
   },
   robots: {
     index: true,
