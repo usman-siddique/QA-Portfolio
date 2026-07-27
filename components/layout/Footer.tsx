@@ -71,7 +71,7 @@ export function Footer() {
 
       <Container className="border-t border-border py-6">
         <p className="text-xs text-muted-foreground">
-          © {year} {profile.name}. Built from scratch with Next.js.
+          © {year} {profile.name}.
         </p>
       </Container>
     </footer>
