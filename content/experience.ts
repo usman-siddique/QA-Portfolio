@@ -60,7 +60,7 @@ export const experience: Experience[] = [
     companyUrl: "https://yolkar.com",
     title: "SQA Engineer",
     employmentType: "Part-time · Remote",
-    startDate: "2026-04",
+    startDate: "2025-12",
     endDate: null,
     domain: [
       "Ride-sharing",
