@@ -8,8 +8,16 @@ import { Reveal } from "@/components/ui/Reveal";
 import { TechIcon } from "@/components/ui/TechIcon";
 import { artifacts } from "@/content/artifacts";
 
+const mobileMetricTitles: Record<string, string> = {
+  Pattern: "POM",
+  Coverage: "36+ Playwright Tests",
+  Execution: "Parallel Execution",
+  Reporting: "HTML Reports",
+};
+
 export function ArtifactGrid() {
   const [featured, ...rest] = artifacts;
+  const isSatAutomation = featured?.name === "SAT Automation";
 
   return (
     <section className="border-b border-border bg-surface/25">
@@ -32,7 +40,13 @@ export function ArtifactGrid() {
                 className="group block"
               >
                 <div className="surface-sheen relative overflow-hidden rounded-[var(--radius-xl)] border border-border-strong bg-surface-2 shadow-elevated-md transition-all duration-300 hover:-translate-y-1 hover:border-accent/50 hover:shadow-glow">
-                  <div className="grid gap-10 p-8 sm:p-10 lg:grid-cols-[1.2fr_1fr] lg:gap-14 lg:p-12">
+                  <div
+                    className={`grid lg:grid-cols-[1.2fr_1fr] lg:gap-14 lg:p-12 ${
+                      isSatAutomation
+                        ? "gap-6 p-5 sm:gap-10 sm:p-10"
+                        : "gap-10 p-8 sm:p-10"
+                    }`}
+                  >
                     <div className="flex flex-col gap-5">
                       <div className="flex flex-wrap items-center gap-3">
                         <Badge className="border-accent/40 text-accent">
@@ -61,16 +75,50 @@ export function ArtifactGrid() {
                       </span>
                     </div>
 
-                    <div className="flex flex-col gap-6">
-                      <div className="grid grid-cols-2 gap-x-6 gap-y-6 rounded-[var(--radius-lg)] border border-border bg-surface p-6">
-                        {featured.facts.map((fact) => (
-                          <MetricStat
-                            key={fact.label}
-                            value={fact.value}
-                            label={fact.label}
-                          />
-                        ))}
-                      </div>
+                    <div
+                      className={`flex flex-col ${
+                        isSatAutomation ? "gap-4 md:gap-6" : "gap-6"
+                      }`}
+                    >
+                      {isSatAutomation ? (
+                        <>
+                          <div className="grid grid-cols-2 gap-1.5 rounded-[var(--radius-lg)] border border-border bg-surface p-1.5 md:hidden">
+                            {featured.facts.map((fact) => (
+                              <div
+                                key={fact.label}
+                                className="surface-sheen flex min-h-[4.25rem] min-w-0 flex-col justify-between rounded-[var(--radius-md)] border border-border bg-surface-2/70 p-2 shadow-xs"
+                              >
+                                <span className="break-words font-mono text-[13px] font-bold leading-tight tracking-[-0.04em] text-foreground">
+                                  {mobileMetricTitles[fact.label] ?? fact.value}
+                                </span>
+                                <span className="font-mono text-[9px] uppercase leading-tight tracking-[0.1em] text-muted-foreground">
+                                  {fact.label}
+                                </span>
+                              </div>
+                            ))}
+                          </div>
+
+                          <div className="hidden grid-cols-2 gap-x-6 gap-y-6 rounded-[var(--radius-lg)] border border-border bg-surface p-6 md:grid">
+                            {featured.facts.map((fact) => (
+                              <MetricStat
+                                key={fact.label}
+                                value={fact.value}
+                                label={fact.label}
+                              />
+                            ))}
+                          </div>
+                        </>
+                      ) : (
+                        <div className="grid grid-cols-2 gap-x-6 gap-y-6 rounded-[var(--radius-lg)] border border-border bg-surface p-6">
+                          {featured.facts.map((fact) => (
+                            <MetricStat
+                              key={fact.label}
+                              value={fact.value}
+                              label={fact.label}
+                            />
+                          ))}
+                        </div>
+                      )}
 
                       {featured.tools.length > 0 ? (
                         <div className="flex flex-wrap gap-2">
