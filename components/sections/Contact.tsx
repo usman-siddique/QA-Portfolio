@@ -69,7 +69,7 @@ export function Contact() {
                 <span className="flex size-8 shrink-0 items-center justify-center rounded-[var(--radius-sm)] border border-border bg-surface text-accent">
                   <MapPin className="size-4" aria-hidden="true" />
                 </span>
-                {profile.location} · Open to full-time &amp; freelance roles
+                {profile.location}
               </div>
             </div>
           </Reveal>
