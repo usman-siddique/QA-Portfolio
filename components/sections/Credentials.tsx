@@ -1,4 +1,10 @@
-import { GraduationCap, Award, ExternalLink } from "lucide-react";
+import {
+  Award,
+  BookOpenCheck,
+  CalendarDays,
+  ExternalLink,
+  GraduationCap,
+} from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Card } from "@/components/ui/Card";
@@ -14,20 +20,57 @@ export function Credentials() {
           <SectionHeading eyebrow="Credentials" title="Education & certifications" />
         </Reveal>
 
-        <div className="mt-14 grid gap-6 lg:grid-cols-[1fr_1.3fr]">
+        <div className="mt-14 grid gap-6 lg:grid-cols-[1.25fr_1fr]">
           <Reveal>
-            <Card className="flex h-full flex-col gap-4">
-              <GraduationCap
-                className="size-6 text-accent"
+            <Card className="relative flex h-full flex-col gap-6 overflow-hidden border-border-strong">
+              <span
                 aria-hidden="true"
+                className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-accent via-accent/45 to-transparent"
               />
-              <div>
-                <h3 className="text-lg font-medium text-foreground">
-                  {education.degree}
-                </h3>
-                <p className="mt-1 text-sm text-muted-foreground">
-                  {education.institution}
-                </p>
+
+              <div className="flex items-start gap-4">
+                <span className="flex size-12 shrink-0 items-center justify-center rounded-[var(--radius-md)] border border-accent/25 bg-accent/[0.08] text-accent shadow-xs">
+                  <GraduationCap className="size-6" aria-hidden="true" />
+                </span>
+
+                <div className="min-w-0 flex-1">
+                  <h3 className="text-lg font-medium leading-snug text-foreground">
+                    {education.degree}
+                  </h3>
+                  <div className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1.5">
+                    <p className="text-sm text-muted-foreground">
+                      {education.institution}
+                    </p>
+                    <p className="inline-flex items-center gap-1.5 font-mono text-[10px] tracking-[0.08em] text-muted-foreground/75">
+                      <CalendarDays className="size-3" aria-hidden="true" />
+                      {education.period}
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <p className="hidden text-sm leading-relaxed text-muted-foreground md:block">
+                {education.summary}
+              </p>
+
+              <div className="mt-auto border-t border-border pt-5">
+                <div className="flex items-center gap-2 text-xs font-medium text-foreground">
+                  <BookOpenCheck
+                    className="size-4 text-accent"
+                    aria-hidden="true"
+                  />
+                  Key subjects
+                </div>
+                <ul className="mt-3 grid gap-2 sm:grid-cols-2">
+                  {education.subjects.map((subject) => (
+                    <li
+                      key={subject}
+                      className="rounded-[var(--radius-sm)] border border-border bg-surface-2/70 px-3 py-2 font-mono text-[10px] leading-snug text-muted-foreground"
+                    >
+                      {subject}
+                    </li>
+                  ))}
+                </ul>
               </div>
             </Card>
           </Reveal>

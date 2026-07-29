@@ -13,10 +13,12 @@ export function ProjectCard({
   experience: Experience;
   index: number;
 }) {
+  const isYolKar = experience.slug === "yolkar";
+
   return (
     <Card
       interactive
-      className="group relative flex h-full flex-col justify-between gap-8 overflow-hidden"
+      className="group relative flex h-full flex-col justify-between gap-4 overflow-hidden md:gap-8"
     >
       <span
         aria-hidden="true"
@@ -41,7 +43,11 @@ export function ProjectCard({
           />
         </div>
 
-        <p className="text-sm leading-relaxed text-muted-foreground">
+        <p
+          className={`text-sm leading-relaxed text-muted-foreground ${
+            isYolKar ? "line-clamp-4 md:line-clamp-none" : ""
+          }`}
+        >
           {experience.overview}
         </p>
 
@@ -53,7 +59,7 @@ export function ProjectCard({
       </div>
 
       {experience.metrics.length > 0 ? (
-        <div className="relative grid grid-cols-3 gap-4 border-t border-border pt-6">
+        <div className="relative grid grid-cols-3 gap-4 border-t border-border pt-3 md:pt-6">
           {experience.metrics.slice(0, 3).map((metric) => (
             <MetricStat
               key={metric.label}

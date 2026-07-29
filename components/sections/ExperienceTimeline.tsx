@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Badge } from "@/components/ui/Badge";
@@ -31,8 +31,14 @@ export function ExperienceTimeline() {
 
                 <Link
                   href={`/work/${item.slug}`}
-                  className="flex flex-col gap-4 rounded-[var(--radius-md)] py-8 transition-colors duration-300 hover:bg-surface/70 sm:flex-row sm:items-start sm:justify-between sm:gap-8 sm:px-4 sm:py-10"
+                  aria-label={`View the ${item.company} case study`}
+                  className="group/link relative flex flex-col gap-4 rounded-[var(--radius-md)] py-8 transition-[background-color,transform] duration-200 active:scale-[0.995] active:bg-surface/70 sm:flex-row sm:items-start sm:justify-between sm:gap-8 sm:px-4 sm:py-10 sm:hover:bg-surface/70"
                 >
+                  <ArrowUpRight
+                    className="absolute right-0 top-8 size-[18px] text-accent/80 transition-colors group-active/link:text-accent sm:hidden"
+                    aria-hidden="true"
+                  />
+
                   <div className="sm:w-48 sm:shrink-0">
                     <p className="font-mono text-xs uppercase tracking-wider text-muted-foreground">
                       {formatDateRange(item.startDate, item.endDate)}

@@ -20,7 +20,7 @@ export function FeaturedWork() {
           />
         </Reveal>
 
-        <div className="mt-14 flex flex-col gap-6">
+        <div className="mt-8 flex flex-col gap-6 md:mt-14">
           {flagship ? (
             <Reveal>
               <SpotlightCard experience={flagship} />

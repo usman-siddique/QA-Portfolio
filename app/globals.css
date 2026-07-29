@@ -22,6 +22,7 @@
   --accent: #96600f;
   --accent-strong: #7a4e0c;
   --accent-soft: #f1e4cc;
+  --github-icon: #181717;
   --success: #15803d;
   --danger: #b91c1c;
   --radius-sm: 4px;
@@ -52,6 +53,7 @@
   --accent: #e3a542;
   --accent-strong: #f0bc6a;
   --accent-soft: #3a2d15;
+  --github-icon: #f0f6fc;
   --success: #4ade80;
   --danger: #f87171;
 
@@ -79,6 +81,7 @@
     --accent: #e3a542;
     --accent-strong: #f0bc6a;
     --accent-soft: #3a2d15;
+    --github-icon: #f0f6fc;
     --success: #4ade80;
     --danger: #f87171;
 

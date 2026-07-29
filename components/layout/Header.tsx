@@ -53,7 +53,13 @@ export function Header() {
 
         <div className="hidden items-center gap-3 md:flex">
           <ThemeToggle />
-          <Button href={profile.resumeUrl} variant="secondary" size="sm">
+          <Button
+            href={profile.resumeUrl}
+            variant="secondary"
+            size="sm"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             Resume
           </Button>
           <Button href="/#contact" size="sm">
@@ -112,6 +118,15 @@ export function Header() {
                   <Button
                     href={profile.resumeUrl}
                     variant="secondary"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => setOpen(false)}
+                  >
+                    View Resume
+                  </Button>
+                  <Button
+                    href={profile.resumeUrl}
+                    download="Muhammad-Usman-Resume.pdf"
                     onClick={() => setOpen(false)}
                   >
                     Download Resume

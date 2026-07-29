@@ -23,7 +23,7 @@ export function ArtifactGrid() {
               href={profile.github}
               variant="secondary"
               size="sm"
-              className="w-full shrink-0 sm:w-auto"
+              className="w-full shrink-0 text-accent sm:w-auto sm:text-foreground"
             >
               View all on GitHub
               <ArrowUpRight className="size-4" aria-hidden="true" />
@@ -47,9 +47,12 @@ export function ArtifactGrid() {
               >
                 <span className="flex size-10 shrink-0 items-center justify-center rounded-[var(--radius-md)] border border-border bg-surface-2 text-accent">
                   {artifact.tools.length > 0 ? (
-                    <TechIcon name={artifact.tools[0]} className="size-4" />
+                    <TechIcon
+                      name={artifact.tools[0]}
+                      className="size-[22px]"
+                    />
                   ) : (
-                    <Database className="size-4" aria-hidden="true" />
+                    <Database className="size-[22px]" aria-hidden="true" />
                   )}
                 </span>
 
@@ -57,7 +60,7 @@ export function ArtifactGrid() {
                   <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-muted-foreground">
                     Project {String(index + 1).padStart(2, "0")}
                   </span>
-                  <span className="mt-1 block text-sm font-medium leading-snug text-foreground sm:text-[15px]">
+                  <span className="mt-1 block text-[15px] font-medium leading-snug text-foreground sm:text-base">
                     {artifact.name}
                   </span>
                   <span className="mt-1 block text-xs leading-relaxed text-muted-foreground">
@@ -66,7 +69,7 @@ export function ArtifactGrid() {
                 </span>
 
                 <ArrowUpRight
-                  className="mt-0.5 size-4 shrink-0 text-muted-foreground transition-all group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-accent"
+                  className="mt-0.5 size-4 shrink-0 text-accent transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
                   aria-hidden="true"
                 />
               </a>

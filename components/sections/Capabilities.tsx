@@ -11,6 +11,23 @@ const iconizedTools = Array.from(
   new Set(skills.flatMap((group) => group.items).filter(hasTechIcon)),
 );
 
+const toolFocus: Record<string, string> = {
+  Playwright: "Automation",
+  Python: "Programming",
+  Pytest: "Test Framework",
+  Postman: "API Testing",
+  "Apache JMeter": "Performance",
+  Jira: "Bug Tracking",
+  TestRail: "Test Management",
+  BrowserStack: "Cross-Browser",
+  Git: "Version Control",
+  GitHub: "Code Collaboration",
+  SQLyog: "Database Client",
+  Figma: "Design Handoff",
+  "Chrome DevTools": "Debugging",
+  MySQL: "Database",
+};
+
 const primaryMeta: Record<string, { icon: LucideIcon; blurb: string }> = {
   "Testing Practices": {
     icon: Target,
@@ -66,7 +83,7 @@ export function Capabilities() {
               </h3>
               <div className="mt-5 grid grid-cols-3 gap-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8">
                 {iconizedTools.map((tool) => (
-                  <IconTile key={tool} name={tool} />
+                  <IconTile key={tool} name={tool} label={toolFocus[tool]} />
                 ))}
               </div>
             </div>

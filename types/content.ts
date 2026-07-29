@@ -57,6 +57,9 @@ export interface Certification {
 export interface Education {
   degree: string;
   institution: string;
+  period: string;
+  summary: string;
+  subjects: string[];
 }
 
 export interface Testimonial {
