@@ -1,4 +1,4 @@
-import { Target, Terminal, type LucideIcon } from "lucide-react";
+import { Database, Target, Terminal, type LucideIcon } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Card } from "@/components/ui/Card";
@@ -10,6 +10,12 @@ import { skills } from "@/content/skills";
 const iconizedTools = Array.from(
   new Set(skills.flatMap((group) => group.items).filter(hasTechIcon)),
 );
+
+const industryExperience = [
+  "Automotive E-commerce",
+  "Ride-sharing & Mobility",
+  "SaaS & E-learning Platforms",
+];
 
 const toolFocus: Record<string, string> = {
   Playwright: "Automation",
@@ -28,39 +34,72 @@ const toolFocus: Record<string, string> = {
   MySQL: "Database",
 };
 
-const primaryMeta: Record<string, { icon: LucideIcon; blurb: string }> = {
-  "Testing Practices": {
+const capabilityPillars: Array<{
+  icon: LucideIcon;
+  title: string;
+  summary: string;
+  coverage: string[];
+}> = [
+  {
     icon: Target,
-    blurb:
-      "Full-spectrum manual and functional coverage across web and mobile, from first pass to release sign-off.",
+    title: "Manual & Release Testing",
+    summary:
+      "Functional, regression, smoke, sanity, exploratory, and UI testing across critical web and mobile journeys.",
+    coverage: [
+      "Functional · Regression",
+      "Smoke · Sanity",
+      "Exploratory · UI/UX",
+      "Cross-browser · Device",
+    ],
   },
-  "Automation & Programming": {
+  {
+    icon: Database,
+    title: "API, Database & Performance",
+    summary:
+      "REST API testing with Postman, database validation using MySQL and SQL Server, and load testing with JMeter.",
+    coverage: [
+      "Postman · REST APIs",
+      "MySQL · SQL Server",
+      "JMeter · Load Testing",
+    ],
+  },
+  {
     icon: Terminal,
-    blurb:
-      "Automation structured for maintainability — page objects and parallel execution, not one-off scripts.",
+    title: "Test Automation",
+    summary:
+      "Maintainable Playwright automation built with Python, Pytest, page objects, and parallel execution.",
+    coverage: [
+      "Playwright · Python",
+      "Pytest",
+      "POM Framework",
+      "Parallel · Multi-browser",
+    ],
   },
-};
+];
 
 // Categories whose real tools now live in the icon grid above collapse
 // into a compact reference strip instead of standing as near-empty
 // boxes of their own.
-const stripLabels: Record<string, string> = {
-  "Tools & Platforms": "Also Used",
-  Databases: "Databases",
-  "Platforms Tested": "Platforms",
-  "Process & Methodology": "Methodology",
-};
+const supportingGroups = [
+  {
+    label: "Management & Tracking",
+    items: ["Jira", "Bugzilla", "TestRail", "Zephyr Scale"],
+  },
+  {
+    label: "Databases",
+    items: ["MySQL", "SQL Server", "SQLyog"],
+  },
+  {
+    label: "Platforms",
+    items: ["Web", "Desktop", "iOS", "Android"],
+  },
+  {
+    label: "Methodology",
+    items: ["SDLC", "STLC", "Agile", "Scrum"],
+  },
+];
 
 export function Capabilities() {
-  const primaryGroups = skills.filter((g) => g.category in primaryMeta);
-  const stripGroups = skills
-    .filter((g) => g.category in stripLabels)
-    .map((g) => ({
-      label: stripLabels[g.category],
-      items: g.items.filter((item) => !hasTechIcon(item)),
-    }))
-    .filter((g) => g.items.length > 0);
-
   return (
     <section
       id="capabilities"
@@ -71,13 +110,102 @@ export function Capabilities() {
           <SectionHeading
             eyebrow="Capabilities"
             title="One integrated testing stack"
-            description="Manual, API, performance, database, and automation testing — not siloed skills, but one coverage strategy applied across every engagement."
+            description="Manual web and mobile testing, REST APIs with Postman, databases with MySQL and SQL Server, performance with JMeter, and Playwright automation with Python."
           />
         </Reveal>
 
+        <Reveal delay={0.04}>
+          <div className="mt-10 hidden items-center justify-between gap-6 border-y border-border py-4 md:flex">
+            <h3 className="shrink-0 font-mono text-[11px] uppercase tracking-[0.14em] text-accent">
+              Industry Experience
+            </h3>
+            <ul
+              className="flex flex-wrap justify-end gap-2"
+              aria-label="Industries with professional testing experience"
+            >
+              {industryExperience.map((industry) => (
+                <li
+                  key={industry}
+                  className="rounded-[var(--radius-sm)] border border-border-strong bg-surface-2 px-3 py-2 font-mono text-[10px] uppercase leading-tight tracking-wide text-foreground/80"
+                >
+                  {industry}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </Reveal>
+
+        <div className="mt-8 grid gap-4 lg:grid-cols-3">
+          {capabilityPillars.map((pillar, index) => {
+            const Icon = pillar.icon;
+            return (
+              <Reveal key={pillar.title} delay={0.06 + index * 0.05}>
+                <Card className="relative flex h-full flex-col gap-4 overflow-hidden p-5 sm:p-6">
+                  <div className="flex items-start gap-3 pr-8">
+                    <span className="flex size-10 shrink-0 items-center justify-center rounded-[var(--radius-md)] border border-border-strong bg-surface-2 text-accent">
+                      <Icon className="size-[18px]" aria-hidden="true" />
+                    </span>
+                    <div className="min-w-0">
+                      <p className="font-mono text-[9px] uppercase tracking-[0.14em] text-muted-foreground">
+                        Quality Layer {String(index + 1).padStart(2, "0")}
+                      </p>
+                      <h3 className="mt-1 text-base font-medium leading-snug text-foreground">
+                        {pillar.title}
+                      </h3>
+                    </div>
+                  </div>
+
+                  <span
+                    aria-hidden="true"
+                    className="absolute right-4 top-3 font-mono text-4xl font-semibold leading-none text-accent/[0.07]"
+                  >
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+
+                  <p className="text-[13px] leading-relaxed text-muted-foreground sm:text-sm">
+                    {pillar.summary}
+                  </p>
+
+                  <ul className="flex flex-wrap gap-2">
+                    {pillar.coverage.map((item) => (
+                      <li
+                        key={item}
+                        className="rounded-[var(--radius-sm)] border border-border bg-surface-2 px-2.5 py-1.5 font-mono text-[9px] uppercase leading-tight tracking-wide text-foreground/75 sm:text-[10px]"
+                      >
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+
+                </Card>
+              </Reveal>
+            );
+          })}
+        </div>
+
+        <Reveal delay={0.22}>
+          <div className="mt-4 rounded-[var(--radius-lg)] border border-border bg-surface/80 p-4 shadow-xs sm:p-5">
+            <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-accent">
+              Supporting Coverage
+            </p>
+            <div className="mt-3 grid grid-cols-2 gap-x-4 gap-y-3 md:grid-cols-4">
+              {supportingGroups.map((group) => (
+                <div key={group.label} className="min-w-0">
+                  <p className="font-mono text-[9px] uppercase tracking-wider text-muted-foreground">
+                    {group.label}
+                  </p>
+                  <p className="mt-1 text-xs leading-relaxed text-foreground/80">
+                    {group.items.join(" · ")}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </Reveal>
+
         {iconizedTools.length > 0 ? (
-          <Reveal delay={0.05}>
-            <div className="mt-14">
+          <Reveal delay={0.28}>
+            <div className="mt-10">
               <h3 className="font-mono text-xs uppercase tracking-[0.14em] text-accent">
                 Core Tools &amp; Technologies
               </h3>
@@ -86,70 +214,6 @@ export function Capabilities() {
                   <IconTile key={tool} name={tool} label={toolFocus[tool]} />
                 ))}
               </div>
-            </div>
-          </Reveal>
-        ) : null}
-
-        <div className="mt-8 grid gap-6 lg:grid-cols-2">
-          {primaryGroups.map((group, index) => {
-            const meta = primaryMeta[group.category];
-            const Icon = meta.icon;
-            return (
-              <Reveal key={group.category} delay={0.1 + index * 0.06}>
-                <Card className="flex h-full flex-col gap-5">
-                  <div className="flex items-center gap-3">
-                    <span className="flex size-10 shrink-0 items-center justify-center rounded-[var(--radius-md)] border border-border bg-surface-2 text-accent">
-                      <Icon className="size-[18px]" aria-hidden="true" />
-                    </span>
-                    <h3 className="text-base font-medium text-foreground">
-                      {group.category}
-                    </h3>
-                  </div>
-
-                  <p className="text-sm leading-relaxed text-muted-foreground">
-                    {meta.blurb}
-                  </p>
-
-                  <ul className="mt-1 grid grid-cols-1 gap-x-6 gap-y-2.5 border-t border-border pt-5 sm:grid-cols-2">
-                    {group.items.map((item) => (
-                      <li
-                        key={item}
-                        className="flex items-start gap-2.5 text-sm text-foreground/85"
-                      >
-                        <span
-                          aria-hidden="true"
-                          className="mt-2 size-1 shrink-0 rounded-full bg-accent"
-                        />
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                </Card>
-              </Reveal>
-            );
-          })}
-        </div>
-
-        {stripGroups.length > 0 ? (
-          <Reveal delay={0.24}>
-            <div className="mt-6 grid gap-x-8 gap-y-6 rounded-[var(--radius-lg)] border border-border bg-surface px-6 py-6 shadow-xs sm:grid-cols-2 sm:px-8 lg:grid-cols-4">
-              {stripGroups.map((group, index) => (
-                <div
-                  key={group.label}
-                  className={
-                    index > 0
-                      ? "sm:border-l sm:border-border sm:pl-8"
-                      : undefined
-                  }
-                >
-                  <p className="font-mono text-[11px] uppercase tracking-wider text-accent">
-                    {group.label}
-                  </p>
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                    {group.items.join(" · ")}
-                  </p>
-                </div>
-              ))}
             </div>
           </Reveal>
         ) : null}

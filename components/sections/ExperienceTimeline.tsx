@@ -15,7 +15,7 @@ export function ExperienceTimeline() {
           <SectionHeading eyebrow="Experience" title="Career timeline" />
         </Reveal>
 
-        <ol className="relative mt-14 flex flex-col">
+        <ol className="relative mt-10 flex flex-col gap-3 sm:mt-14 sm:gap-0">
           <div
             aria-hidden="true"
             className="absolute bottom-3 left-[7px] top-3 hidden w-px bg-border sm:block"
@@ -23,7 +23,7 @@ export function ExperienceTimeline() {
 
           {experience.map((item, index) => (
             <Reveal key={item.slug} delay={index * 0.06}>
-              <li className="group relative border-t border-border first:border-t-0 sm:pl-12">
+              <li className="group relative border-0 sm:border-t sm:border-border sm:pl-12 sm:first:border-t-0">
                 <span
                   aria-hidden="true"
                   className="absolute left-0 top-11 hidden size-[15px] rounded-full border-[3px] border-background bg-border shadow-elevated-sm transition-colors duration-300 group-hover:bg-accent sm:block"
@@ -32,10 +32,10 @@ export function ExperienceTimeline() {
                 <Link
                   href={`/work/${item.slug}`}
                   aria-label={`View the ${item.company} case study`}
-                  className="group/link relative flex flex-col gap-4 rounded-[var(--radius-md)] py-8 transition-[background-color,transform] duration-200 active:scale-[0.995] active:bg-surface/70 sm:flex-row sm:items-start sm:justify-between sm:gap-8 sm:px-4 sm:py-10 sm:hover:bg-surface/70"
+                  className="group/link relative flex flex-col gap-4 rounded-[var(--radius-lg)] border border-border-strong bg-surface/70 px-4 py-5 shadow-elevated-sm transition-[background-color,border-color,transform] duration-200 active:scale-[0.995] active:border-accent/50 sm:flex-row sm:items-start sm:justify-between sm:gap-8 sm:rounded-[var(--radius-md)] sm:border-0 sm:bg-transparent sm:px-4 sm:py-10 sm:shadow-none sm:hover:bg-surface/70"
                 >
                   <ArrowUpRight
-                    className="absolute right-0 top-8 size-[18px] text-accent/80 transition-colors group-active/link:text-accent sm:hidden"
+                    className="absolute right-4 top-5 size-[18px] text-accent/80 transition-colors group-active/link:text-accent sm:hidden"
                     aria-hidden="true"
                   />
 
@@ -46,7 +46,7 @@ export function ExperienceTimeline() {
                   </div>
 
                   <div className="flex-1">
-                    <h3 className="text-lg font-medium text-foreground transition-colors group-hover:text-accent">
+                    <h3 className="pr-7 text-lg font-medium text-accent transition-colors sm:pr-0 sm:text-foreground sm:group-hover:text-accent">
                       {item.title} · {item.company}
                     </h3>
                     {item.employmentType ? (

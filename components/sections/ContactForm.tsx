@@ -65,7 +65,7 @@ export function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} noValidate className="flex flex-col gap-5">
+    <form onSubmit={handleSubmit(onSubmit)} noValidate className="flex flex-col gap-4 sm:gap-5">
       {/* Honeypot — hidden from sighted users, visible to bots that fill every field */}
       <div className="sr-only" aria-hidden="true">
         <label htmlFor="company">Company</label>
@@ -78,7 +78,7 @@ export function ContactForm() {
         />
       </div>
 
-      <div className="grid gap-5 sm:grid-cols-2">
+      <div className="grid gap-4 sm:grid-cols-2 sm:gap-5">
         <div className="flex flex-col gap-2">
           <label htmlFor="name" className="text-sm font-medium text-foreground">
             Name
@@ -89,7 +89,8 @@ export function ContactForm() {
             autoComplete="name"
             aria-invalid={errors.name ? "true" : "false"}
             aria-describedby={errors.name ? "name-error" : undefined}
-            className="h-11 rounded-[var(--radius-sm)] border border-border bg-background px-3.5 text-sm text-foreground outline-none transition-colors focus:border-accent"
+            placeholder="Your name"
+            className="h-11 rounded-[var(--radius-sm)] border border-border-strong bg-background/70 px-3.5 text-sm text-foreground outline-none transition-[border-color,box-shadow] placeholder:text-muted-foreground/55 focus:border-accent focus:ring-2 focus:ring-accent/15"
             {...register("name")}
           />
           {errors.name ? (
@@ -109,7 +110,8 @@ export function ContactForm() {
             autoComplete="email"
             aria-invalid={errors.email ? "true" : "false"}
             aria-describedby={errors.email ? "email-error" : undefined}
-            className="h-11 rounded-[var(--radius-sm)] border border-border bg-background px-3.5 text-sm text-foreground outline-none transition-colors focus:border-accent"
+            placeholder="you@example.com"
+            className="h-11 rounded-[var(--radius-sm)] border border-border-strong bg-background/70 px-3.5 text-sm text-foreground outline-none transition-[border-color,box-shadow] placeholder:text-muted-foreground/55 focus:border-accent focus:ring-2 focus:ring-accent/15"
             {...register("email")}
           />
           {errors.email ? (
@@ -127,7 +129,8 @@ export function ContactForm() {
         <input
           id="subject"
           type="text"
-          className="h-11 rounded-[var(--radius-sm)] border border-border bg-background px-3.5 text-sm text-foreground outline-none transition-colors focus:border-accent"
+          placeholder="Role, project, or testing support"
+          className="h-11 rounded-[var(--radius-sm)] border border-border-strong bg-background/70 px-3.5 text-sm text-foreground outline-none transition-[border-color,box-shadow] placeholder:text-muted-foreground/55 focus:border-accent focus:ring-2 focus:ring-accent/15"
           {...register("subject")}
         />
       </div>
@@ -141,7 +144,8 @@ export function ContactForm() {
           rows={5}
           aria-invalid={errors.message ? "true" : "false"}
           aria-describedby={errors.message ? "message-error" : undefined}
-          className="resize-none rounded-[var(--radius-sm)] border border-border bg-background px-3.5 py-3 text-sm text-foreground outline-none transition-colors focus:border-accent"
+          placeholder="Tell me about the product, role, or quality challenge."
+          className="resize-none rounded-[var(--radius-sm)] border border-border-strong bg-background/70 px-3.5 py-3 text-sm text-foreground outline-none transition-[border-color,box-shadow] placeholder:text-muted-foreground/55 focus:border-accent focus:ring-2 focus:ring-accent/15"
           {...register("message")}
         />
         {errors.message ? (
@@ -158,7 +162,11 @@ export function ContactForm() {
         </div>
       ) : null}
 
-      <Button type="submit" disabled={status === "submitting"} className="w-full sm:w-fit">
+      <Button
+        type="submit"
+        disabled={status === "submitting"}
+        className="w-full bg-accent text-background hover:bg-accent/90"
+      >
         {status === "submitting" ? (
           <>
             <Loader2 className="size-4 animate-spin" aria-hidden="true" />
