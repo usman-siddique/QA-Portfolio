@@ -1,67 +1,100 @@
-# Muhammad Usman — Portfolio
+# Muhammad Usman — SQA Portfolio
 
-Personal portfolio for Muhammad Usman, SQA Engineer building toward Test
-Automation. Built from scratch with Next.js (App Router), TypeScript,
-Tailwind CSS v4, and Motion.
+A responsive portfolio presenting Muhammad Usman's professional software
+quality assurance experience, production case studies, testing capabilities,
+automation work, credentials, and contact channels.
 
-## Stack
+**Live site:** [usman-sqa.vercel.app](https://usman-sqa.vercel.app)
 
-- **Framework:** Next.js 16 (App Router, RSC)
-- **Styling:** Tailwind CSS v4 (CSS-based `@theme` design tokens in `app/globals.css`)
-- **Motion:** Motion (Framer Motion successor), reduced-motion aware
-- **Forms:** react-hook-form + zod, delivered via Resend
-- **Theming:** next-themes (light/dark, user-toggleable)
-- **Deployment target:** Vercel (free tier)
+## Highlights
 
-## Structure
+- Production case studies for SAT Japan, YolKar, and Cross Solutions
+- Manual, API, database, performance, mobile, and automation testing coverage
+- Playwright and Python automation projects in the Engineering Lab
+- Responsive experience timeline, education, certifications, and resume access
+- Functional contact form with validation, spam protection, and Resend delivery
+- Light and dark themes with reduced-motion support
+- Dynamic metadata, Open Graph images, `robots.txt`, and `sitemap.xml`
 
-```
-app/                  Routes, layouts, metadata, API routes
-  work/[slug]/         Case study pages (one per employer engagement)
-  api/contact/         Contact form submission handler (Resend)
+## Technology stack
+
+- **Framework:** Next.js 16 App Router with React Server Components
+- **Language:** TypeScript
+- **Styling:** Tailwind CSS v4 with CSS-based design tokens
+- **Motion:** Motion, with reduced-motion support
+- **Forms:** React Hook Form and Zod
+- **Email delivery:** Resend
+- **Icons:** Lucide React and React Icons
+- **Theming:** next-themes
+- **Hosting:** Vercel
+
+## Project structure
+
+```text
+app/                    Pages, layouts, metadata, API routes, and SEO files
+  api/contact/          Server-side contact form handler
+  work/[slug]/          Individual case-study pages
 components/
-  layout/              Header, Footer, theme provider/toggle
-  sections/            Home page sections (Hero, FeaturedWork, Contact, ...)
-  ui/                  Design system primitives (Button, Card, Badge, ...)
-content/               Typed, source-of-truth content (profile, experience,
-                        skills, certifications, education, artifacts, testimonials)
-lib/                   Utilities, site config, validation schemas
-types/                 Shared content types
+  layout/               Header, footer, and theme controls
+  sections/             Portfolio sections
+  ui/                   Shared design-system components
+content/                Typed portfolio data
+lib/                    Site configuration, utilities, and validation schemas
+public/                 Resume and other static assets
+types/                  Shared content types
 ```
 
-All page content is sourced from `content/*.ts` — no copy is hardcoded
-into components. Nothing in `content/` is fabricated; fields without a
-verified value are left `null`/empty rather than guessed (see e.g.
-`content/education.ts`, `content/testimonials.ts`).
+Most portfolio data is maintained in `content/*.ts`. Presentation-specific
+headings and supporting copy live alongside their components.
+
+## Updating portfolio content
+
+| Content | File |
+| --- | --- |
+| Personal details and social links | `content/profile.ts` |
+| Employment and case-study content | `content/experience.ts` |
+| Skills and tools | `content/skills.ts` |
+| Engineering Lab projects | `content/artifacts.ts` |
+| Education | `content/education.ts` |
+| Certifications | `content/certifications.ts` |
+| Resume | Replace `public/resume.pdf` using the same filename |
+| Production URL and navigation | `lib/site.ts` |
 
 ## Environment variables
 
-Create `.env.local` (already gitignored) with:
+Copy `.env.example` to `.env.local` and add the required Resend key:
 
+```env
+RESEND_API_KEY=re_your_api_key
+CONTACT_FROM_EMAIL=
 ```
-RESEND_API_KEY=          # required for the contact form to actually send mail
-CONTACT_FROM_EMAIL=      # optional — defaults to Resend's sandbox sender
-```
 
-Without `RESEND_API_KEY`, the contact form still validates and renders
-correctly but returns a clear error instead of silently failing.
+- `RESEND_API_KEY` is required for contact-form email delivery.
+- `CONTACT_FROM_EMAIL` is optional. If omitted, the API route uses Resend's
+  sandbox sender.
+- Environment variables must also be configured in Vercel for deployed builds.
+  Redeploy after adding or changing them.
 
-## Development
+Secrets must never be committed to the repository.
+
+## Local development
 
 ```bash
 npm install
-npm run dev      # http://localhost:3000
-npm run build    # production build
-npm run lint
+npm run dev
 ```
 
-## Known pending items
+Open [http://localhost:3000](http://localhost:3000).
 
-- `RESEND_API_KEY` — not yet set (intentionally deferred until closer to
-  deployment). Contact form validates and renders correctly but returns
-  a clear error instead of sending until this is set.
-- `lib/site.ts` `url` — placeholder Vercel subdomain; update once a
-  custom domain is attached.
-- `content/education.ts` — intentionally shows only degree + institution,
-  no dates/CGPA, per explicit instruction.
-- `content/testimonials.ts` — intentionally empty until real testimonials are provided.
+## Validation
+
+```bash
+npm run lint
+npx tsc --noEmit
+npm run build
+```
+
+## Deployment
+
+The repository is configured for Vercel. Connect the GitHub repository, add
+the required environment variables, and deploy the `main` branch.
