@@ -16,6 +16,23 @@ automation work, credentials, and contact channels.
 - Light and dark themes with reduced-motion support
 - Dynamic metadata, Open Graph images, `robots.txt`, and `sitemap.xml`
 
+## SEO and search visibility
+
+- Google Search Console ownership is verified for the production site.
+- `/sitemap.xml` is submitted successfully and currently exposes the homepage
+  plus all three case-study pages.
+- The homepage passes Google's live URL inspection and is available for
+  crawling and indexing.
+- Search performance and page-indexing coverage are monitored in Search
+  Console; newly deployed or substantially updated pages can be submitted for
+  recrawling through URL Inspection.
+- Page metadata includes descriptive titles, summaries, canonical URLs for
+  case studies, Open Graph cards, Twitter cards, and Person structured data.
+
+Search Console processing and indexing are asynchronous, so a successful live
+inspection confirms index eligibility rather than guaranteed placement in
+search results.
+
 ## Technology stack
 
 - **Framework:** Next.js 16 App Router with React Server Components
