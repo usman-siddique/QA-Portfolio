@@ -1,7 +1,7 @@
 import type { SkillCategory } from "@/types/content";
 
 // Consolidated from the résumé and verified portfolio content.
-// Each skill and tool is shown once so the section stays fast to scan.
+// Ordered in desktop row pairs: left-column capability, then right-column capability.
 export const skills: SkillCategory[] = [
   {
     category: "Manual Testing",
@@ -12,48 +12,49 @@ export const skills: SkillCategory[] = [
       "Sanity",
       "Exploratory",
       "Integration",
-      "UI/UX",
+      "E2E",
+      "UI Validation",
     ],
   },
   {
     category: "Test Automation",
-    items: ["Playwright", "Python", "Pytest", "Page Object Model (POM)"],
+    items: ["Playwright", "Python", "Pytest", "Page Object Model"],
   },
   {
     category: "API Testing",
     items: ["Postman", "REST APIs"],
   },
   {
-    category: "Database Testing",
+    category: "Platform Coverage",
+    items: ["Web", "Android", "iOS"],
+  },
+  {
+    category: "Database Validation",
     items: ["MySQL", "SQL Server", "SQLyog"],
-  },
-  {
-    category: "Performance Testing",
-    items: ["Apache JMeter", "Load Testing"],
-  },
-  {
-    category: "Platforms Tested",
-    items: ["Web", "Desktop", "Android", "iOS"],
-  },
-  {
-    category: "Test Case Management",
-    items: ["TestRail", "Zephyr Scale"],
-  },
-  {
-    category: "Bug Tracking",
-    items: ["Jira", "Bugzilla"],
   },
   {
     category: "Cross-Browser Testing",
     items: ["BrowserStack"],
   },
   {
-    category: "Methodologies",
-    items: ["Agile", "Scrum", "SDLC", "STLC"],
+    category: "Performance Testing",
+    items: ["Apache JMeter", "Load Testing"],
+  },
+  {
+    category: "Defect Management",
+    items: ["Jira", "Bugzilla"],
+  },
+  {
+    category: "Test Management",
+    items: ["TestRail", "Zephyr Scale"],
   },
   {
     category: "Version Control",
     items: ["Git", "GitHub"],
+  },
+  {
+    category: "QA Methodologies",
+    items: ["Agile", "Scrum", "SDLC", "STLC"],
   },
   {
     category: "Design Collaboration",
@@ -67,13 +68,13 @@ export const coreTools = [
   { name: "Pytest", label: "Test Framework" },
   { name: "Postman", label: "API Testing" },
   { name: "Apache JMeter", label: "Performance" },
-  { name: "Jira", label: "Bug Tracking" },
+  { name: "Jira", label: "Defect Management" },
   { name: "TestRail", label: "Test Management" },
   { name: "BrowserStack", label: "Cross-Browser" },
   { name: "Git", label: "Version Control" },
   { name: "GitHub", label: "Code Collaboration" },
+  { name: "Chrome DevTools", label: "Debugging" },
   { name: "SQLyog", label: "Database Client" },
-  { name: "Figma", label: "Design Handoff" },
   { name: "MySQL", label: "Database" },
   { name: "SQL Server", label: "Database" },
 ] as const;
