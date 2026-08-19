@@ -107,6 +107,7 @@ const iconMap: Record<string, IconComponent> = {
   // use neutral, honest concept icons instead of a claimed brand mark.
   SQLyog: Database,
   BrowserStack: MonitorSmartphone,
+  "SQL Server": Database,
 };
 
 const brandColorMap: Record<string, string> = {
@@ -126,6 +127,7 @@ const brandColorMap: Record<string, string> = {
   TestRail: "#65C179",
   SQLyog: "#22A6F2",
   BrowserStack: "#F5A623",
+  "SQL Server": "#CC2927",
 };
 
 export function hasTechIcon(name: string) {
