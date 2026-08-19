@@ -37,7 +37,7 @@ export function IconTile({
           {name}
         </span>
         {label ? (
-          <span className="mt-1 hidden font-mono text-[9px] leading-tight tracking-wide text-muted-foreground sm:block">
+          <span className="mt-1 block font-mono text-[9px] leading-tight tracking-wide text-muted-foreground">
             {label}
           </span>
         ) : null}

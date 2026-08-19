@@ -10,18 +10,18 @@ export function Capabilities() {
       id="capabilities"
       className="scroll-mt-16 border-b border-border bg-surface/40"
     >
-      <Container className="py-20 sm:py-28">
+      <Container className="py-16 sm:py-20">
         <Reveal>
           <SectionHeading
-            eyebrow="Skills & Tools"
-            title="QA expertise at a glance"
-            description="Manual testing, APIs, databases, performance, and Playwright automation—all in one view."
-            className="max-w-3xl"
+            eyebrow="QA CAPABILITIES"
+            title="Quality engineering across Web, Mobile, APIs, Data & Automation"
+            description="Functional validation, API testing, database verification, performance testing, and maintainable test automation."
+            className="max-w-4xl"
           />
         </Reveal>
 
         <div
-          className="mt-10 grid gap-3 lg:grid-cols-2 lg:gap-x-5 lg:gap-y-3"
+          className="mt-8 grid gap-3 lg:grid-cols-2 lg:gap-x-5"
           aria-label="Quality assurance skills and tools"
         >
           {skills.map((skill, index) => (
@@ -47,11 +47,11 @@ export function Capabilities() {
         </div>
 
         <Reveal delay={0.36}>
-          <div className="mt-12 border-t border-border pt-10">
+          <div className="mt-10 border-t border-border pt-8">
             <h3 className="font-mono text-xs uppercase tracking-[0.14em] text-accent">
-              Core Tools &amp; Technologies
+              Core QA Toolchain
             </h3>
-            <div className="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-7">
+            <div className="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-5 xl:grid-cols-7">
               {coreTools.map((tool) => (
                 <IconTile key={tool.name} name={tool.name} label={tool.label} />
               ))}
