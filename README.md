@@ -29,10 +29,6 @@ automation work, credentials, and contact channels.
 - Page metadata includes descriptive titles, summaries, canonical URLs for
   case studies, Open Graph cards, Twitter cards, and Person structured data.
 
-Search Console processing and indexing are asynchronous, so a successful live
-inspection confirms index eligibility rather than guaranteed placement in
-search results.
-
 ## Technology stack
 
 - **Framework:** Next.js 16 App Router with React Server Components
